@@ -1,0 +1,2 @@
+﻿--
+dotnet ef dbcontext scaffold "Host=server.postgres.database.azure.com;Database=db;Ssl Mode=Require;Username=dev@psql-scharff-dev-server;Password=xxxxx" Npgsql.EntityFrameworkCore.PostgreSQL -o DbModel

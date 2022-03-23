@@ -30,10 +30,9 @@ namespace Shartff.Shared.ApiRest.Configuration
                 .AllowAnyHeader();
             });
 
+            app.UseAuthentication();
 
-            //app.UseAuthentication();
-
-            //app.UseAuthorization();
+            app.UseAuthorization();
 
             app.UseResponseCaching();
 
@@ -57,18 +56,6 @@ namespace Shartff.Shared.ApiRest.Configuration
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-
-                //Health ckecks
-                //endpoints.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions()
-                //{
-                //    ResultStatusCodes = {
-                //        [HealthStatus.Healthy] = StatusCodes.Status200OK,
-                //        [HealthStatus.Degraded] = StatusCodes.Status500InternalServerError,
-                //        [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
-                //    },
-                //    Predicate = (check) => check.Tags.Count == 0,
-                //    AllowCachingResponses = false
-                //});
             });
         }
     }

@@ -8,13 +8,13 @@ namespace Sharff.ApiRest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ExampleComtroller : ControllerBase
+    public class ExampleController : ControllerBase
     {
         public readonly IMapper _mapper;
 
         public readonly IExampleService _exampleService;
 
-        public ExampleComtroller(IMapper mapper, IExampleService exampleService)
+        public ExampleController(IMapper mapper, IExampleService exampleService)
         {
             this._mapper = mapper;
             this._exampleService = exampleService;

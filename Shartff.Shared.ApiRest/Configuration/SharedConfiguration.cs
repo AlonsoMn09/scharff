@@ -1,14 +1,19 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Text;
 
 namespace Shartff.Shared.ApiRest.Configuration
 {
     public static class SharedConfiguration
     {
+        public const string TokenKey = "key_Mx68787317t_87";
+
         public static void AddSharedAPIRestServices(this IServiceCollection services, string apiName)
         {
             var serviceProvider = services.BuildServiceProvider();
@@ -28,8 +33,25 @@ namespace Shartff.Shared.ApiRest.Configuration
 
             services.AddCors();
 
-            services.AddControllers()
-                       .AddNewtonsoftJson();
+            services.AddControllers().AddNewtonsoftJson();
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = true;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(TokenKey)),
+                    ValidateAudience = false,
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = false
+                };
+            });
 
             services.AddAuthorization();
 
@@ -60,8 +82,6 @@ namespace Shartff.Shared.ApiRest.Configuration
                     }
                 });
             });
-
-            //Authentication
 
             //Servicio para recuperar el contexto de la request
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();

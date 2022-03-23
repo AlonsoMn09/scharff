@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharff.Core", "Sharff.Core\Sharff.Core.csproj", "{B28F5493-AB30-4668-95A0-AA3A401DDEFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharff.Core", "Sharff.Core\Sharff.Core.csproj", "{B28F5493-AB30-4668-95A0-AA3A401DDEFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharff.Domain.Model", "Sharff.Domain.Model\Sharff.Domain.Model.csproj", "{11374331-D30C-4DFB-8DE7-5DFBD0230E63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharff.Domain.Model", "Sharff.Domain.Model\Sharff.Domain.Model.csproj", "{11374331-D30C-4DFB-8DE7-5DFBD0230E63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharff.ApiRest", "Sharff.ApiRest\Sharff.ApiRest.csproj", "{2499D812-1042-4EBD-B0AB-1D02B550DCC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharff.ApiRest", "Sharff.ApiRest\Sharff.ApiRest.csproj", "{2499D812-1042-4EBD-B0AB-1D02B550DCC8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Core", "01.Core", "{1B2FA131-2DCA-4225-8F4F-BA2582E44374}"
 EndProject
@@ -15,7 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Domain", "02.Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00.Shared", "00.Shared", "{BD1F8F13-1806-4908-BDA0-D235EADD480E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shartff.Shared.ApiRest", "Shartff.Shared.ApiRest\Shartff.Shared.ApiRest.csproj", "{E19B0387-9840-4386-8E4C-BDB5387FE717}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shartff.Shared.ApiRest", "Shartff.Shared.ApiRest\Shartff.Shared.ApiRest.csproj", "{E19B0387-9840-4386-8E4C-BDB5387FE717}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Test", "03.Test", "{029A55CC-55CA-4351-8E5C-5800D7CB9BED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shartff.Shared.ApiRest.Test", "Shartff.Shared.ApiRest.Test\Shartff.Shared.ApiRest.Test.csproj", "{136A2FE5-08FB-4AFD-B8B1-60991552A212}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,10 @@ Global
 		{E19B0387-9840-4386-8E4C-BDB5387FE717}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E19B0387-9840-4386-8E4C-BDB5387FE717}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E19B0387-9840-4386-8E4C-BDB5387FE717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{136A2FE5-08FB-4AFD-B8B1-60991552A212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136A2FE5-08FB-4AFD-B8B1-60991552A212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136A2FE5-08FB-4AFD-B8B1-60991552A212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136A2FE5-08FB-4AFD-B8B1-60991552A212}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +55,7 @@ Global
 		{B28F5493-AB30-4668-95A0-AA3A401DDEFC} = {1B2FA131-2DCA-4225-8F4F-BA2582E44374}
 		{11374331-D30C-4DFB-8DE7-5DFBD0230E63} = {0A3E3EC3-6D05-4012-892F-9B15491BEBC0}
 		{E19B0387-9840-4386-8E4C-BDB5387FE717} = {BD1F8F13-1806-4908-BDA0-D235EADD480E}
+		{136A2FE5-08FB-4AFD-B8B1-60991552A212} = {029A55CC-55CA-4351-8E5C-5800D7CB9BED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33D8D2E8-B1C3-4C4B-88BA-D39F58DB98AD}
