@@ -11,6 +11,11 @@ namespace Sharff.Domain.Model.DbContexts
     {
         protected readonly string ConnectionString;
 
+        public SharffDbContext()
+        {
+
+        }
+
         public SharffDbContext(string connectionString)
         {
             this.ConnectionString = connectionString;
