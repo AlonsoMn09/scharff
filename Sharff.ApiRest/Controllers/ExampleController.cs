@@ -23,8 +23,14 @@ namespace Sharff.ApiRest.Controllers
         [HttpGet()]
         public async Task<ActionResult<ExampleDto>> GetExample()
         {
-            var result = await this._exampleService.GetExampleAsync();
-            return Ok(this._mapper.Map<ExampleDto>(result));
+            var resultService = await this._exampleService.GetExampleAsync();
+
+            var result = new ResultDto
+            {
+                StatusCode = 200
+            };
+            result.Payload = this._mapper.Map<ExampleDto>(resultService);
+            return Ok(result);
         }
     }
 }
