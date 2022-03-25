@@ -1,4 +1,5 @@
 ﻿#https://docs.microsoft.com/en-us/ef/core/cli/dotnet
+#https://www.entityframeworktutorial.net/
 
 --Instalar cmd
 dotnet tool install --global dotnet-ef
