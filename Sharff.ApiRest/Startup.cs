@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sharff.ApiRest.Configuration;
+using Sharff.Domain.Model.DbContexts;
 using Shartff.Shared.ApiRest.Configuration;
 
 namespace Sharff.ApiRest
@@ -23,6 +25,10 @@ namespace Sharff.ApiRest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSharedAPIRestServices(_apiName);
+
+            //Appsettings file
+            services.AddEntityFrameworkNpgsql()
+                .AddDbContext<SharffDbContext>(options => options.UseNpgsql(this.Configuration.GetConnectionString("DbConnetion")));
 
             services.AddCoreServices();
         }

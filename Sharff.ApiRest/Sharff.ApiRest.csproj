@@ -22,6 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="SKJ.Shared.Data">
+      <HintPath>..\External\SKJ.Shared.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Dockerfile">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
