@@ -12,18 +12,16 @@ namespace Sharff.ApiRest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ExampleController : ControllerBase
+    public class ExampleController : BaseController
     {
         private readonly ILogger<ExampleController> _logger;
 
-        public readonly IMapper _mapper;
-
         public readonly IExampleService _exampleService;
 
-        public ExampleController(ILogger<ExampleController> logger, IMapper mapper, IExampleService exampleService)
+        public ExampleController(ILogger<ExampleController> logger, IMapper mapper, IExampleService exampleService) : base(mapper)
         {
             this._logger = logger;
-            this._mapper = mapper;
+
             this._exampleService = exampleService;
         }
 

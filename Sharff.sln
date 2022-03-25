@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shartff.Shared.ApiRest", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Test", "03.Test", "{029A55CC-55CA-4351-8E5C-5800D7CB9BED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shartff.Shared.ApiRest.Test", "Shartff.Shared.ApiRest.Test\Shartff.Shared.ApiRest.Test.csproj", "{136A2FE5-08FB-4AFD-B8B1-60991552A212}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shartff.Shared.ApiRest.Test", "Shartff.Shared.ApiRest.Test\Shartff.Shared.ApiRest.Test.csproj", "{136A2FE5-08FB-4AFD-B8B1-60991552A212}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

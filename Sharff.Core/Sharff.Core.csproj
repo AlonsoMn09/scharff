@@ -8,4 +8,10 @@
     <ProjectReference Include="..\Sharff.Domain.Model\Sharff.Domain.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="SKJ.Shared.Data">
+      <HintPath>..\External\SKJ.Shared.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
