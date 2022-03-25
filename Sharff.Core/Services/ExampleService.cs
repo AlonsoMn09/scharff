@@ -10,5 +10,10 @@ namespace Sharff.Core.Services
         {
             return new Example { Id = 1, Description = "Test"};
         }
+
+        public async Task<Example> GetExampleByIdAsync(Example example)
+        {
+            return new Example { Id = 2, Description = "Test2" };
+        }
     }
 }
