@@ -8,8 +8,8 @@ using Sharff.Domain.Model.DbModel;
 
 namespace Sharff.Core.Services.Interfaces
 {
-    public class IResultService
+    public interface IResultService
     {
-        private Task<bool> CrateAsync(TblLog model);
+       Task<bool> CreateAsync(TblLog model);
     }
 }

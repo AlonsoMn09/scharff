@@ -12,7 +12,7 @@ namespace Sharff.Core.Services
     public class ResultService : IResultService
     {
       
-        public async Task<bool> CrateAsync(TblLog model)
+        public async Task<bool> CreateAsync(TblLog model)
         {
             using (var context = new RepositoryManager(new SharffDbContext()))
             {
