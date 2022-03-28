@@ -17,7 +17,7 @@ namespace Sharff.Domain.Model.DbContexts
         #region Repositories
 
         public IRepository<TblGuiaInboundFedex> GuiaInboundFedexRepository { get; private set; }
-
+        public IRepository<TblLog> LogRepository { get; private set; }
         #endregion
 
         public RepositoryManager(DbContext context)
@@ -25,6 +25,8 @@ namespace Sharff.Domain.Model.DbContexts
             this.Context = context as SharffDbContext;
 
             this.GuiaInboundFedexRepository = new Respository<TblGuiaInboundFedex>(this.Context);
+
+            this.LogRepository = new Respository<TblLog>(this.Context);
         }
 
         public void Dispose()

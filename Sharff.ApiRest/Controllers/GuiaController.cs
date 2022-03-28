@@ -64,6 +64,7 @@ namespace Sharff.ApiRest.Controllers
             {
                 var resultService = await this._guiaService.GetByIdAsync(id);
                 result.Payload = this._mapper.Map<IEnumerable<GuiaInboundFedexDto>>(resultService);
+                this._logger.LogWarning($"La guia de ID {id} no ha sido encontrada");
                 return Ok(result);
             }
             catch (System.Exception ex)

@@ -15,12 +15,14 @@ namespace Sharff.ApiRest.Controllers
         private readonly ILogger<ExampleController> _logger;
 
         public readonly IExampleService _exampleService;
+       
 
         public ExampleController(ILogger<ExampleController> logger, IMapper mapper, IExampleService exampleService) : base(mapper)
         {
             this._logger = logger;
 
             this._exampleService = exampleService;
+           
         }
 
         [HttpGet()]
@@ -30,16 +32,18 @@ namespace Sharff.ApiRest.Controllers
             {
                 StatusCode = 200
             };
-
+        
             try
             {
                 var resultService = await this._exampleService.GetExampleAsync();
                 result.Payload = this._mapper.Map<ExampleDto>(resultService);
+                this._logger.LogInformation("Obteniendo examples");
                 return Ok(result);
             }
             catch (System.Exception ex)
             {
                 this._logger.LogError(ex.Message, ex.InnerException);
+               
             }
             return BadRequest(result);
         }
