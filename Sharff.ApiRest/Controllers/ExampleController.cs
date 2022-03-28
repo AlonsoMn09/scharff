@@ -28,6 +28,11 @@ namespace Sharff.ApiRest.Controllers
         [HttpGet()]
         public async Task<ActionResult<ExampleDto>> GetExample()
         {
+            var log = new LogDto
+            {
+                fecha = System.DateTime.Now
+
+            };
             var result = new ResultDto
             {
                 StatusCode = 200
@@ -37,7 +42,7 @@ namespace Sharff.ApiRest.Controllers
             {
                 var resultService = await this._exampleService.GetExampleAsync();
                 result.Payload = this._mapper.Map<ExampleDto>(resultService);
-                this._logger.LogInformation("Obteniendo examples");
+                
                 return Ok(result);
             }
             catch (System.Exception ex)
