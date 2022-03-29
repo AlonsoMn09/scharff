@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Sharff.Domain.Model.DbModel;
 
 namespace Sharff.Domain.Model.DbContexts
@@ -18,19 +17,6 @@ namespace Sharff.Domain.Model.DbContexts
         public virtual DbSet<PgBuffercache> PgBuffercaches { get; set; }
         public virtual DbSet<PgStatStatement> PgStatStatements { get; set; }
         public virtual DbSet<TblGuiaInboundFedex> TblGuiaInboundFedices { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-
-                var connectionString = config.GetConnectionString("DbConnetion");
-
-                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseNpgsql(connectionString);
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

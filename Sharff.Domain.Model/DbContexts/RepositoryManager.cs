@@ -1,12 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Sharff.Domain.Model.DbContexts.Interfaces;
 using Sharff.Domain.Model.DbModel;
 using SKJ.Shared.Data.Repositories;
 using SKJ.Shared.Data.Repositories.Interfaces;
+using System;
 using System.Threading.Tasks;
 
 namespace Sharff.Domain.Model.DbContexts
 {
-    public class RepositoryManager : IRepositoryManager
+    public class RepositoryManager : IDataManager
     {
         #region Fields
 
@@ -16,20 +17,23 @@ namespace Sharff.Domain.Model.DbContexts
 
         #region Repositories
 
-        public IRepository<TblGuiaInboundFedex> GuiaInboundFedexRepository { get; private set; }
+        private readonly IRepository<TblGuiaInboundFedex> _guiaInboundFedexRepository;
 
         #endregion
 
-        public RepositoryManager(DbContext context)
+        public RepositoryManager(SharffDbContext context)
         {
-            this.Context = context as SharffDbContext;
-
-            this.GuiaInboundFedexRepository = new Respository<TblGuiaInboundFedex>(this.Context);
+            this.Context = context;
         }
+
+        public IRepository<TblGuiaInboundFedex> GuiaInboundFedexRepository => _guiaInboundFedexRepository ?? new Respository<TblGuiaInboundFedex>(this.Context);
 
         public void Dispose()
         {
-            this.Context.Dispose();
+            if (this.Context != null)
+            {
+                this.Context.Dispose();
+            }
         }
 
         public async Task<int> SaveChanges()

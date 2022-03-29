@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Sharff.ApiRest.Models;
@@ -10,6 +11,7 @@ namespace Sharff.ApiRest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class ExampleController : BaseController
     {
         private readonly ILogger<ExampleController> _logger;
