@@ -12,8 +12,6 @@ namespace Shartff.Shared.ApiRest.Configuration
 {
     public static class SharedConfiguration
     {
-        public const string TokenKey = "key_Mx68787317t_87";
-
         public static void AddSharedAPIRestServices(this IServiceCollection services, string apiName)
         {
             var serviceProvider = services.BuildServiceProvider();
@@ -46,7 +44,7 @@ namespace Shartff.Shared.ApiRest.Configuration
                 x.SaveToken = true;
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(TokenKey)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration["Authentication:SecretKey"])),
                     ValidateAudience = false,
                     ValidateIssuerSigningKey = true,
                     ValidateIssuer = false

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Sharff.ApiRest.Models;
@@ -12,6 +13,7 @@ namespace Sharff.ApiRest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class GuiaController : BaseController
     {
         #region Fields
@@ -63,7 +65,7 @@ namespace Sharff.ApiRest.Controllers
             try
             {
                 var resultService = await this._guiaService.GetByIdAsync(id);
-                result.Payload = this._mapper.Map<IEnumerable<GuiaInboundFedexDto>>(resultService);
+                result.Payload = this._mapper.Map<GuiaInboundFedexDto>(resultService);
                 this._logger.LogWarning($"La guia de ID {id} no ha sido encontrada");
                 return Ok(result);
             }

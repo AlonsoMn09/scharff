@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Sharff.ApiRest.Models;
@@ -12,6 +13,7 @@ namespace Sharff.ApiRest.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class ExampleController : BaseController
     {
         private readonly ILogger<ExampleController> _logger;
@@ -32,8 +34,7 @@ namespace Sharff.ApiRest.Controllers
         public async Task<ActionResult<ExampleDto>> GetExample()
         {
             var log = new LogDto
-            {
-               
+            { 
             LogFecha = System.DateTime.Now.ToString()
         };
             var result = new ResultDto
