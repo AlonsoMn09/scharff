@@ -7,9 +7,8 @@ namespace Sharff.ApiRest.Models
 {
     public class LogDto
     {
-        public object log_carga { get; set; }
-        public string message { get; set; }
-
-        public DateTime fecha { get; set; }
+        public int LogId { get; set; }
+        public string LogMessage { get; set; }
+        public string LogFecha { get; set; }
     }
 }

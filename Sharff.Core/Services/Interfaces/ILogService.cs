@@ -11,5 +11,6 @@ namespace Sharff.Core.Services.Interfaces
     public interface ILogService
     {
        Task<bool> CreateAsync(TblLog model);
+
     }
 }

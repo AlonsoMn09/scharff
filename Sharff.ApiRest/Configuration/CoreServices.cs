@@ -12,6 +12,7 @@ namespace Sharff.ApiRest.Configuration
         {
             services.AddScoped<IExampleService, ExampleService>();
             services.AddScoped<IGuiaService, GuiaService>();
+            services.AddScoped<ILogService, LogService>();
         }
     }
 }
