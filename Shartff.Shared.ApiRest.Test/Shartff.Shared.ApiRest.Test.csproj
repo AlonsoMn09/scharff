@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
@@ -18,6 +19,7 @@
     <ProjectReference Include="..\Sharff.ApiRest\Sharff.ApiRest.csproj" />
     <ProjectReference Include="..\Sharff.Core\Sharff.Core.csproj" />
     <ProjectReference Include="..\Sharff.Domain.Model\Sharff.Domain.Model.csproj" />
+    <ProjectReference Include="..\Shartff.Shared.ApiRest\Shartff.Shared.ApiRest.csproj" />
   </ItemGroup>
 
 </Project>

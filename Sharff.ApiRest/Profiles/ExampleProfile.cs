@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Sharff.ApiRest.Models;
-using Sharff.Domain.Model.Model;
+using Sharff.Domain.Model.DbModel;
 
 namespace Sharff.ApiRest.Profiles
 {
@@ -8,7 +8,8 @@ namespace Sharff.ApiRest.Profiles
     {
         public ExampleProfile()
         {
-            CreateMap<Example, ExampleDto>();
+            CreateMap<ExampleDto, TblExampleFedex>();
+            CreateMap<TblExampleFedex, ExampleDto>();           
         }
     }
 }
