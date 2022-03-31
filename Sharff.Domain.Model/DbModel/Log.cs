@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Sharff.ApiRest.Models
+#nullable disable
+
+namespace Sharff.Domain.Model.DbModel
 {
-    public class LogDto
+    public partial class Log
     {
         public string Exception { get; set; }
         public string Level { get; set; }

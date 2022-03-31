@@ -11,7 +11,6 @@ namespace Sharff.ApiRest.Configuration
         public static void AddCoreServices(this IServiceCollection services)
         {
             services.AddTransient<IDataManager, RepositoryManager>();
-
             services.AddScoped<IExampleService, ExampleService>();
             services.AddScoped<IGuiaService, GuiaService>();
             services.AddScoped<ILogService, LogService>();

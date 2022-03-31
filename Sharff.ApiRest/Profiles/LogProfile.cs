@@ -12,8 +12,8 @@ namespace Sharff.ApiRest.Profiles
     {
         public LogProfile()
         {
-            CreateMap<LogDto, TblLog>();
-            CreateMap<TblLog, LogDto>();
+        
+            CreateMap<Log, LogDto>();
         }
     }
 }

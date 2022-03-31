@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using Sharff.ApiRest.Configuration;
 using Sharff.Domain.Model.DbContexts;
 using Shartff.Shared.ApiRest.Configuration;
@@ -29,7 +30,7 @@ namespace Sharff.ApiRest
             //Appsettings file
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<SharffDbContext>(options => options.UseNpgsql(this.Configuration.GetConnectionString("DbConnetion")));
-
+                
             services.AddCoreServices();
         }
 
@@ -37,6 +38,7 @@ namespace Sharff.ApiRest
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.SharedConfigure(env, _apiName);
+            app.UseSerilogRequestLogging();
         }
     }
 }

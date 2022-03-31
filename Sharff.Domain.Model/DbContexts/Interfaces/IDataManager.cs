@@ -6,5 +6,7 @@ namespace Sharff.Domain.Model.DbContexts.Interfaces
     public interface IDataManager : IRepositoryManager
     {
         IRepository<TblGuiaInboundFedex> GuiaInboundFedexRepository { get; }
+        IRepository<Log> LogRepository { get; }
+ 
     }
 }

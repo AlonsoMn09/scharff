@@ -33,10 +33,10 @@ namespace Sharff.ApiRest.Controllers
         [HttpGet()]
         public async Task<ActionResult<ExampleDto>> GetExample()
         {
-            var log = new LogDto
-            { 
-            LogFecha = System.DateTime.Now.ToString()
-        };
+        //    var log = new LogDto
+        //    { 
+        //    LogFecha = System.DateTime.Now.ToString()
+        //};
             var result = new ResultDto
             {
                 StatusCode = 200
@@ -47,7 +47,7 @@ namespace Sharff.ApiRest.Controllers
                 var resultService = await this._exampleService.GetExampleAsync();
 
                 
-                await this._logService.CreateAsync(this._mapper.Map<TblLog>(log));
+                //await this._logService.CreateAsync(this._mapper.Map<TblLog>(log));
                 
                 result.Payload = this._mapper.Map<ExampleDto>(resultService);
                 
@@ -56,8 +56,8 @@ namespace Sharff.ApiRest.Controllers
             catch (System.Exception ex)
             {
                 this._logger.LogError(ex.Message, ex.InnerException);
-                log.LogMessage = ex.Message;
-                await this._logService.CreateAsync(this._mapper.Map<TblLog>(log));
+                //log.LogMessage = ex.Message;
+                //await this._logService.CreateAsync(this._mapper.Map<TblLog>(log));
             }
             return BadRequest(result);
         }

@@ -17,22 +17,29 @@ namespace Sharff.Domain.Model.DbContexts
 
         #region Repositories
 
+<<<<<<< HEAD
+        public IRepository<TblGuiaInboundFedex> GuiaInboundFedexRepository { get; private set; }
+        public IRepository<TblLog> LogRepository { get; private set; }
+=======
         private readonly IRepository<TblGuiaInboundFedex> _guiaInboundFedexRepository;
 
-        private readonly IRepository<Log> _LogRepository;
-
+>>>>>>> 1fadb332bd9684bf0c76155d047ddb013f13e8fa
         #endregion
 
         public RepositoryManager(SharffDbContext context)
         {
+<<<<<<< HEAD
+            this.Context = context as SharffDbContext;
+
+            this.GuiaInboundFedexRepository = new Respository<TblGuiaInboundFedex>(this.Context);
+
+            this.LogRepository = new Respository<TblLog>(this.Context);
+=======
             this.Context = context;
-
-
+>>>>>>> 1fadb332bd9684bf0c76155d047ddb013f13e8fa
         }
 
         public IRepository<TblGuiaInboundFedex> GuiaInboundFedexRepository => _guiaInboundFedexRepository ?? new Respository<TblGuiaInboundFedex>(this.Context);
-
-        public IRepository<Log> LogRepository => _LogRepository ?? new Respository<Log>(this.Context);
 
         public void Dispose()
         {

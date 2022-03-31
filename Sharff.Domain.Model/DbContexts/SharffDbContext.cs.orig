@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+=======
+﻿using Microsoft.EntityFrameworkCore;
+>>>>>>> 1fadb332bd9684bf0c76155d047ddb013f13e8fa
 using Sharff.Domain.Model.DbModel;
 
 #nullable disable
@@ -18,9 +22,9 @@ namespace Sharff.Domain.Model.DbContexts
         {
         }
 
-        public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<TblLog> TblLogs { get; set; }
 
+<<<<<<< HEAD
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -30,38 +34,11 @@ namespace Sharff.Domain.Model.DbContexts
             }
         }
 
+=======
+>>>>>>> 1fadb332bd9684bf0c76155d047ddb013f13e8fa
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Spanish_Peru.1252");
-
-            modelBuilder.Entity<Log>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("logs");
-
-                entity.Property(e => e.Exception).HasColumnName("exception");
-
-                entity.Property(e => e.Level)
-                    .HasMaxLength(50)
-                    .HasColumnName("level");
-
-                entity.Property(e => e.MachineName).HasColumnName("machine_name");
-
-                entity.Property(e => e.Message).HasColumnName("message");
-
-                entity.Property(e => e.MessageTemplate).HasColumnName("message_template");
-
-                entity.Property(e => e.Properties)
-                    .HasColumnType("jsonb")
-                    .HasColumnName("properties");
-
-                entity.Property(e => e.PropsTest)
-                    .HasColumnType("json")
-                    .HasColumnName("props_test");
-
-                entity.Property(e => e.RaiseDate).HasColumnName("raise_date");
-            });
 
             modelBuilder.Entity<TblLog>(entity =>
             {

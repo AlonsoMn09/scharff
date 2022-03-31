@@ -1,5 +1,6 @@
 ﻿using Sharff.Core.Services.Interfaces;
 using Sharff.Domain.Model.DbContexts;
+using Sharff.Domain.Model.DbContexts.Interfaces;
 using Sharff.Domain.Model.DbModel;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,26 @@ namespace Sharff.Core.Services
 {
     public class LogService : ILogService
     {
-      
-        public async Task<bool> CreateAsync(TblLog model)
+        private readonly IDataManager DataManager;
+
+        public LogService(IDataManager dataManager)
         {
-            using (var context = new RepositoryManager(new SharffDbContext()))
-            {
-                var result = await context.LogRepository.Add(model);
-                return result > 0;
-            }
+            this.DataManager = dataManager;
+        }
+
+        public async Task<Log> GetFechAsync(DateTime? fecha)
+        {
+            return await this.DataManager.LogRepository.FirstOrDefault(x => x.RaiseDate.Equals(fecha));
+        }
+
+        public async Task<Log> GetRangeFechAsync(string fecha_inicial, string fecha_final)
+        {
+            return await this.DataManager.LogRepository.FirstOrDefault(x => x.RaiseDate.Equals(fecha_inicial));
+        }
+
+        public async Task<Log> GetLevelAsync(string level)
+        {
+            return await this.DataManager.LogRepository.FirstOrDefault(x => x.Level == level);
         }
     }
 }
