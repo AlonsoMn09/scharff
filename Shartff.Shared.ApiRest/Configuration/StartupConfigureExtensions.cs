@@ -36,22 +36,7 @@ namespace Shartff.Shared.ApiRest.Configuration
 
             app.UseResponseCaching();
 
-            app.UseExceptionHandler(c => c.Run(async context =>
-            {
-                var error = context.Features.Get<IExceptionHandlerFeature>().Error;
-                var problem = new ProblemDetails { Title = "Error" };
-                if (error != null)
-                {
-                    if (EnvironmentHelper.IsDebugEnvironment(env))
-                    {
-                        problem.Title = error.Message;
-                        problem.Detail = error.StackTrace;
-                    }
-                    else
-                        problem.Detail = error.Message;
-                }
-                await context.Response.WriteAsJsonAsync(problem);
-            }));
+            app.UseExceptionHandler(err => err.UseCustomErrors(env));
 
             app.UseEndpoints(endpoints =>
             {
