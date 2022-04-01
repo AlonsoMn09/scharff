@@ -10,9 +10,9 @@ namespace Sharff.Core.Services.Interfaces
 {
     public interface ILogService
     {
-        Task<Log> GetFechAsync(DateTime? fecha);
-        Task<Log> GetRangeFechAsync(string fecha_inicial, string fecha_final);
-        Task<Log> GetLevelAsync(string level);
+        Task<IEnumerable<Log>> GetFechAsync(DateTime? fecha);
+        Task<IEnumerable<Log>> GetRangeFechAsync(DateTime? fecha_inicial, DateTime? fecha_final);
+
 
     }
 }

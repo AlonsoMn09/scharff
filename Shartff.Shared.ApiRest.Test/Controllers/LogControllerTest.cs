@@ -30,15 +30,20 @@ namespace Shartff.Shared.ApiRest.Test.Controllers
             this.loggerMock = new Mock<ILogger<LogController>>();
 
         }
-
+        
+        
         [TestMethod]
-        public async Task GetFech(DateTime? fecha)
+
+        [DataRow("2022-03-31 16:03:10.969157")]
+
+        [DataTestMethod]
+        public async Task Getfech(DateTime? fecha)
         {
             //Arrange
             var controller = new LogController(this.loggerMock.Object, this.mapperMock.Object, this.serviceMock.Object);
 
             //Act
-            var result = await controller.GetFech(fecha);
+            var result = await controller.Get(fecha);
 
             //Assert
             Assert.IsNotNull(result);

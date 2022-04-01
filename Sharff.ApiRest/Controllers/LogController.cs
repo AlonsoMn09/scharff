@@ -29,7 +29,7 @@ namespace Sharff.ApiRest.Controllers
         }
 
         [HttpGet("{fecha}")]
-        public async Task<ActionResult<LogDto>> GetFech(DateTime? fecha)
+        public async Task<ActionResult<LogDto>> Get(DateTime? fecha)
         {
             var result = new ResultDto
             {
@@ -38,8 +38,8 @@ namespace Sharff.ApiRest.Controllers
             try
             {
                 var resultService = await this._logservice.GetFechAsync(fecha);
-
-                return Ok(resultService);
+                result.Payload = this._mapper.Map<IEnumerable<LogDto>>(resultService);
+                return Ok(result);
             }
             catch (System.Exception ex)
             {
@@ -47,7 +47,7 @@ namespace Sharff.ApiRest.Controllers
             }
             return BadRequest(result);
         }
-
+       
 
     }
 }

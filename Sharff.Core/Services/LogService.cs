@@ -19,19 +19,16 @@ namespace Sharff.Core.Services
             this.DataManager = dataManager;
         }
 
-        public async Task<Log> GetFechAsync(DateTime? fecha)
+        public async Task<IEnumerable<Log>> GetFechAsync(DateTime? fecha)
         {
-            return await this.DataManager.LogRepository.FirstOrDefault(x => x.RaiseDate.Equals(fecha));
+            return await this.DataManager.LogRepository.Select(x => x.RaiseDate.Equals(fecha));
         }
 
-        public async Task<Log> GetRangeFechAsync(string fecha_inicial, string fecha_final)
+        public async Task<IEnumerable<Log>> GetRangeFechAsync(DateTime? fecha_inicial, DateTime? fecha_final)
         {
-            return await this.DataManager.LogRepository.FirstOrDefault(x => x.RaiseDate.Equals(fecha_inicial));
+            return await this.DataManager.LogRepository.SelectIncludes(x => x.RaiseDate >= fecha_inicial && x.RaiseDate <= fecha_final);
         }
+        
 
-        public async Task<Log> GetLevelAsync(string level)
-        {
-            return await this.DataManager.LogRepository.FirstOrDefault(x => x.Level == level);
-        }
     }
 }

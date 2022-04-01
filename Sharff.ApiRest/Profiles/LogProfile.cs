@@ -12,7 +12,7 @@ namespace Sharff.ApiRest.Profiles
     {
         public LogProfile()
         {
-        
+            CreateMap<LogDto, Log>();
             CreateMap<Log, LogDto>();
         }
     }
