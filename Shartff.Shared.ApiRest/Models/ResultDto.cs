@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Shartff.Shared.ApiRest.Models;
+using System.Net;
 
 namespace Sharff.Domain.Model.Model
 {
@@ -8,11 +9,8 @@ namespace Sharff.Domain.Model.Model
         {
             this.Payload = payload;
         }
-
+        public TraceDto Trace { get; set; }
+        public StatusDto Status { get; set; }
         public T Payload { get; set; }
-
-        public HttpStatusCode StatusCode { get; set; }
-
-        public string Message { get; set; }
     }
 }

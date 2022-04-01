@@ -30,83 +30,83 @@ namespace Sharff.ApiRest.Controllers
             this._guiaService = guiaService;
         }
 
-        [HttpGet()]
-        public async Task<ActionResult> GetAll()
+        [HttpGet("{traceId}")]
+        public async Task<ActionResult> GetAll(string traceId)
         {
             var result = HelperStatus.RespuestaHelper<IEnumerable<GuiaInboundFedexDto>>(new List<GuiaInboundFedexDto>());
             var resultService = await this._guiaService.GetAllAsync();
 
             if (resultService == null)
             {
-                result = HelperStatus.RespuestaHelper<IEnumerable<GuiaInboundFedexDto>>(new List<GuiaInboundFedexDto>(), HttpStatusCode.NotFound, "vacio");
+                result = HelperStatus.RespuestaHelper<IEnumerable<GuiaInboundFedexDto>>(new List<GuiaInboundFedexDto>(), traceId, HttpStatusCode.NotFound, "vacio");
                 return NotFound(result);
             }
 
-            result = HelperStatus.RespuestaHelper<IEnumerable<GuiaInboundFedexDto>>(this._mapper.Map<IEnumerable<GuiaInboundFedexDto>>(resultService));
+            result = HelperStatus.RespuestaHelper<IEnumerable<GuiaInboundFedexDto>>(this._mapper.Map<IEnumerable<GuiaInboundFedexDto>>(resultService), traceId);
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(string id)
+        [HttpGet("{traceId}/{id}")]
+        public async Task<ActionResult> GetById(string traceId, string id)
         {
             var result = HelperStatus.RespuestaHelper<GuiaInboundFedexDto>(new GuiaInboundFedexDto());
             var resultService = await this._guiaService.GetByIdAsync(id);
 
             if (resultService == null)
             {
-                result = HelperStatus.RespuestaHelper<GuiaInboundFedexDto>(new GuiaInboundFedexDto(), HttpStatusCode.NotFound, "vacio");
+                result = HelperStatus.RespuestaHelper<GuiaInboundFedexDto>(new GuiaInboundFedexDto(), traceId, HttpStatusCode.NotFound, "vacio");
                 return BadRequest(result);
             }
 
-            result = HelperStatus.RespuestaHelper<GuiaInboundFedexDto>(this._mapper.Map<GuiaInboundFedexDto>(resultService));
+            result = HelperStatus.RespuestaHelper<GuiaInboundFedexDto>(this._mapper.Map<GuiaInboundFedexDto>(resultService), traceId);
             return Ok(result);
         }
 
-        [HttpPost()]
-        public async Task<ActionResult> Create([FromBody] GuiaInboundFedexDto dto)
+        [HttpPost("{traceId}/{id}")]
+        public async Task<ActionResult> Create(string traceId, [FromBody] GuiaInboundFedexDto dto)
         {
             var result = HelperStatus.RespuestaHelper<bool>(new bool());
             var resultService = await this._guiaService.CrateAsync(this._mapper.Map<TblGuiaInboundFedex>(dto));
 
             if (resultService == false)
             {
-                result = HelperStatus.RespuestaHelper<bool>(false, HttpStatusCode.NotFound, "vacio");
+                result = HelperStatus.RespuestaHelper<bool>(false, traceId, HttpStatusCode.NotFound, "vacio");
                 return NotFound(result);
             }
 
-            result = HelperStatus.RespuestaHelper<bool>(resultService);
+            result = HelperStatus.RespuestaHelper<bool>(resultService, traceId);
             return Ok(result);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Update(string id, [FromBody] GuiaInboundFedexDto dto)
+        [HttpPut("{traceId}/{id}")]
+        public async Task<ActionResult> Update(string traceId, string id, [FromBody] GuiaInboundFedexDto dto)
         {
             var result = HelperStatus.RespuestaHelper<bool>(new bool());
             var resultService = await this._guiaService.UpdateAsync(id, this._mapper.Map<TblGuiaInboundFedex>(dto));
 
             if (resultService == false)
             {
-                result = HelperStatus.RespuestaHelper<bool>(false, HttpStatusCode.NotFound, "vacio");
+                result = HelperStatus.RespuestaHelper<bool>(false, traceId, HttpStatusCode.NotFound, "vacio");
                 return NotFound(result);
             }
 
-            result = HelperStatus.RespuestaHelper<bool>(resultService);
+            result = HelperStatus.RespuestaHelper<bool>(resultService, traceId);
             return Ok(result);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(string id)
+        [HttpDelete("{traceId}/{id}")]
+        public async Task<ActionResult> Delete(string traceId, string id)
         {
             var result = HelperStatus.RespuestaHelper<bool>(new bool());
             var resultService = await this._guiaService.DeleteAsync(id);
 
             if (resultService == false)
             {
-                result = HelperStatus.RespuestaHelper<bool>(false, HttpStatusCode.NotFound, "vacio");
+                result = HelperStatus.RespuestaHelper<bool>(false, traceId, HttpStatusCode.NotFound, "vacio");
                 return NotFound(result);
             }
 
-            result = HelperStatus.RespuestaHelper<bool>(resultService);
+            result = HelperStatus.RespuestaHelper<bool>(resultService, traceId);
             return Ok(result);
         }
     }
